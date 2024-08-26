@@ -2,6 +2,7 @@ package v1
 
 import (
 	"invoice-management/internal/invoice"
+	"invoice-management/internal/models"
 	"net/http"
 	"strconv"
 
@@ -26,13 +27,13 @@ func GetInvoice(c echo.Context) error {
 }
 
 func CreateInvoice(c echo.Context) error {
-	var inv invoice.Invoice
+	var inv models.Invoice
 	if err := c.Bind(&inv); err != nil {
-		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid input"})
+		return c.JSON(http.StatusBadRequest, map[string]string{"error": err.Error()})
 	}
 
 	if err := invoice.AddInvoice(&inv); err != nil {
-		return c.JSON(http.StatusInternalServerError, map[string]string{"error": "Could not create invoice"})
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 	return c.JSON(http.StatusCreated, inv)
 }

@@ -3,7 +3,7 @@ package main
 import (
 	v1 "invoice-management/api/v1"
 	"invoice-management/internal/db"
-	"invoice-management/internal/invoice"
+	"invoice-management/internal/models"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -20,7 +20,7 @@ func main() {
 	db.Init()
 
 	// Auto Migrate the database schema
-	db.DB.AutoMigrate(&invoice.Invoice{})
+	db.DB.AutoMigrate(&models.Invoice{})
 
 	// Register Routes
 	v1.RegisterRoutes(e)
