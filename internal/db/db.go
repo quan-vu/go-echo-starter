@@ -11,7 +11,7 @@ import (
 var DB *gorm.DB
 
 func Init() {
-	dsn := "host=localhost user=postgres password=test dbname=go_echo_starter port=5432 sslmode=disable TimeZone=Asia/Ho_Chi_Minh"
+	dsn := "host=localhost user=postgres password=test dbname=ontrack port=5432 sslmode=disable TimeZone=Asia/Ho_Chi_Minh"
 	var err error
 	DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true,

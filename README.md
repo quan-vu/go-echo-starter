@@ -4,6 +4,19 @@ This is a starter project for Go Echo.
 
 ## Getting Started
 
+Create Postgres database and run the following SQL to create the table.
+
+```sql
+-- Create a new database
+CREATE DATABASE ontrack;
+
+-- Create a new user
+CREATE USER ontrack_user WITH ENCRYPTED PASSWORD 'password';
+
+-- Grant all privileges on the new database to the new user
+GRANT ALL PRIVILEGES ON DATABASE ontrack TO ontrack_user;
+```
+
 ### Prerequisites
 
 - Go 1.16
